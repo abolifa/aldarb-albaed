@@ -1,0 +1,17 @@
+import About from "@/components/about";
+import Contact from "@/components/contact";
+import Hero from "@/components/hero";
+import Products from "@/components/products";
+
+const Home = () => {
+  return (
+    <>
+      <Hero />
+      <About />
+      <Products />
+      <Contact />
+    </>
+  );
+};
+
+export default Home;
