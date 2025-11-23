@@ -4,6 +4,7 @@ import { ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const mediaSequence = [
+  { type: "image", src: "/images/hero-3.jpeg", duration: 8 },
   { type: "image", src: "/images/hero.webp", duration: 8 },
   //   { type: "video", src: "/videos/hero.mp4", duration: 10 },
   { type: "image", src: "/images/hero-2.jpg", duration: 8 },
@@ -78,15 +79,15 @@ const Hero = () => {
 
       <div className="relative z-10 w-full text-center px-6">
         <motion.img
-          src="/meta/logo-icon-white.png"
+          src="/meta/logo-white.png"
           alt="Modern Alraqi Logo"
-          className="mx-auto w-44 md:w-48 h-auto drop-shadow-[0_0_20px_rgba(255,255,255,0.25)]"
+          className="mx-auto w-52 md:w-102 h-auto drop-shadow-[0_0_20px_rgba(255,255,255,0.25)]"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 1 }}
         />
 
-        <motion.h1
+        {/* <motion.h1
           className="text-2xl md:text-4xl font-black text-white"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -102,11 +103,11 @@ const Hero = () => {
           transition={{ delay: 2, duration: 1 }}
         >
           لاستيراد الآلات والمستلزمات الزراعية وقطع غيارها
-        </motion.p>
+        </motion.p> */}
 
         <motion.a
           href="#about"
-          className="inline-block mt-6 px-10 py-4 rounded-full font-semibold text-white bg-green-600 hover:bg-green-700 transition-all shadow-[0_0_25px_rgba(255,255,255,0.2)] hover:shadow-[0_0_40px_rgba(202,56,51,0.5)]"
+          className="inline-block mt-10 px-10 py-4 rounded-full font-semibold text-white bg-green-600 hover:bg-green-700 transition-all shadow-[0_0_25px_rgba(255,255,255,0.2)] hover:shadow-[0_0_40px_rgba(202,56,51,0.5)]"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 2.5, duration: 1 }}
