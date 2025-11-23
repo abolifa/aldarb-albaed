@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Mail, Menu, X } from "lucide-react";
-import { FaFacebookF } from "react-icons/fa";
+import { FaFacebookF, FaWhatsapp } from "react-icons/fa";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -73,18 +73,18 @@ const Navbar = () => {
           ))}
         </nav>
 
-        <div className="flex items-center gap-4 md:gap-6">
+        <div className="flex items-center gap-4 md:gap-4">
           <a
             href="https://wa.me/218912186060"
             target="_blank"
             rel="noopener noreferrer"
             className={`flex items-center justify-center w-9 h-9 rounded-full border transition ${
               scrolled
-                ? "border-black/20 text-black hover:bg-black/10"
-                : "border-white/30 text-white hover:bg-white/10"
+                ? "border-black/20 text-black hover:bg-green-500"
+                : "border-white/30 text-white hover:bg-green-500"
             }`}
           >
-            <FaFacebookF className="w-4 h-4" />
+            <FaWhatsapp className="w-4 h-4" />
           </a>
           <a
             href="mailto:info@alraqialhadeth.com.ly"
