@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { FileText } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FileText, X, ChevronRight, ChevronLeft } from "lucide-react";
+import { useState } from "react";
 
 const contracts = [
   {
@@ -11,7 +12,28 @@ const contracts = [
   },
 ];
 
+const images = [
+  "/projects/1.webp",
+  "/projects/2.webp",
+  "/projects/3.webp",
+  "/projects/4.webp",
+  "/projects/5.webp",
+  "/projects/6.webp",
+];
+
 const Contract = () => {
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  const next = () => {
+    if (lightboxIndex === null) return;
+    setLightboxIndex((lightboxIndex + 1) % images.length);
+  };
+
+  const prev = () => {
+    if (lightboxIndex === null) return;
+    setLightboxIndex((lightboxIndex - 1 + images.length) % images.length);
+  };
+
   return (
     <section
       id="contract"
@@ -40,7 +62,7 @@ const Contract = () => {
           مجموعة العقود المعتمدة رسمياً.
         </motion.p>
 
-        <div className="space-y-4 max-w-3xl mx-auto">
+        <div className="space-y-4 w-full mx-auto">
           {contracts.map((c, i) => (
             <motion.div
               key={i}
@@ -82,7 +104,67 @@ const Contract = () => {
             </motion.div>
           ))}
         </div>
+
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {images.map((src, i) => (
+            <motion.img
+              key={i}
+              src={src}
+              alt=""
+              onClick={() => setLightboxIndex(i)}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.7, delay: i * 0.1 }}
+              viewport={{ once: true }}
+              className="w-full h-72 object-cover rounded-lg shadow-sm hover:shadow-md transition cursor-pointer"
+            />
+          ))}
+        </div>
       </div>
+
+      <AnimatePresence>
+        {lightboxIndex !== null && (
+          <motion.div
+            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-9999 flex items-center justify-center p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <div className="relative w-full max-w-4xl flex items-center justify-center">
+              <button
+                onClick={() => setLightboxIndex(null)}
+                className="absolute top-4 right-4 text-white p-2 rounded-full bg-black/40 hover:bg-black/60 transition"
+              >
+                <X className="w-6 h-6" />
+              </button>
+
+              <button
+                onClick={prev}
+                className="absolute left-2 md:left-4 text-white p-3 rounded-full bg-black/40 hover:bg-black/60 transition"
+              >
+                <ChevronLeft className="w-7 h-7" />
+              </button>
+
+              <button
+                onClick={next}
+                className="absolute right-2 md:right-4 text-white p-3 rounded-full bg-black/40 hover:bg-black/60 transition"
+              >
+                <ChevronRight className="w-7 h-7" />
+              </button>
+
+              <motion.img
+                key={lightboxIndex}
+                src={images[lightboxIndex]}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3 }}
+                className="max-h-[85vh] max-w-full rounded-lg shadow-xl object-contain"
+              />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
