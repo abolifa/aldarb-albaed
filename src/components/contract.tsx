@@ -13,12 +13,27 @@ const contracts = [
 ];
 
 const images = [
-  "/projects/1.webp",
-  "/projects/2.webp",
-  "/projects/3.webp",
-  "/projects/4.webp",
-  "/projects/5.webp",
-  "/projects/6.webp",
+  "/projects/1.jpeg",
+  "/projects/2.jpeg",
+  "/projects/17.jpeg",
+  "/projects/3.jpeg",
+  "/projects/4.jpeg",
+  "/projects/5.jpeg",
+  "/projects/6.jpeg",
+  "/projects/7.jpeg",
+  "/projects/8.jpeg",
+  "/projects/9.jpeg",
+  "/projects/10.jpeg",
+  "/projects/11.jpeg",
+  "/projects/12.jpeg",
+  "/projects/13.jpeg",
+  "/projects/14.jpeg",
+  "/projects/15.jpeg",
+  "/projects/16.jpeg",
+  "/projects/18.jpeg",
+  "/projects/19.jpeg",
+  "/projects/20.jpeg",
+  "/projects/21.jpeg",
 ];
 
 const Contract = () => {
